@@ -16,5 +16,24 @@
         <li>Your controller at <code><a href="{{ 'C:/Users/stagiaire/Documents/SF40619/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
         <li>Your template at <code><a href="{{ 'C:/Users/stagiaire/Documents/SF40619/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
     </ul>
+
+
+    <h2>Liste des Utilisateurs</h2>
+    <ul>
+        {% for user in users %}
+        <li>{{ user.email }}</li>
+        <li>{{ user.id }}</li>
+
+       {# <li>{{ user.roles }}</li> #}
+        {% endfor %}
+    </ul>
+
+
+
+
+
+
+
+
 </div>
 {% endblock %}

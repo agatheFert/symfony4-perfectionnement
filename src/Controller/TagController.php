@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Tag;
 use App\Form\TagType;
+use App\Repository\TagRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +15,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class TagController extends AbstractController
 {
 
+     // Afficher liste de tous les TAgs
 
+
+    /**
+     * @Route("/tags", name="app_tags")
+     * @param TagRepository $tagRepository
+     * @return Response
+     */
+    public function liste(TagRepository $tagRepository):Response
+    {
+        $tags = $tagRepository->findAll();
+        return $this->render("tag/liste.html.twig", [
+
+            'tags' => $tags
+        ]);
+
+
+
+    }
 
 
 
