@@ -12,20 +12,32 @@
                     <a class="nav-link" href="{{ path('app_product_index') }}">Liste des produits</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Liste des Utilisateurs</a>
+                    <a class="nav-link" href="{{ path('admin_user_list') }}">Liste des Utilisateurs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Créer Catégorie</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Créer Tags</a>
+                    <a class="nav-link" href="{{ path('app_tag_create') }}">Créer Tags</a>
+                </li>
+
+
+            </ul>
+            <ul>
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED')%}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_register') }}">Créer un compte</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Créer un compte</a>
+                    <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Se connecter</a>
-                </li>
+
+                {% endif %}
+
             </ul>
         </div>
     </div>

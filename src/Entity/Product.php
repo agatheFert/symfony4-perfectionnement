@@ -22,11 +22,20 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=128)
+     * * @Assert\Length(
+     *     min=4,
+     *     max=128
+     * )
      */
+
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * * @Assert\Length(
+     *     min=25,
+     *     max=4000
+     * )
      */
     private $description;
 
@@ -37,6 +46,11 @@ class Product
 
     /**
      * @ORM\Column(type="integer")
+     * * @Assert\Type(type="float")
+     * @Assert\Range(
+     *     min=0,
+     *     max=9999999.99
+     * )
      */
     private $nbViews;
 
