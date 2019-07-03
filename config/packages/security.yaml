@@ -28,6 +28,11 @@ security:
                 authenticators:
                     - App\Security\AppAuthAuthenticator
 
+            remember_me:
+                secret: '%kernel.secret%'
+                #24
+                lifetime: 86400
+
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 

@@ -41,16 +41,16 @@ class Product
 
     /**
      * @ORM\Column(type="decimal", precision=9, scale=2)
+     * @Assert\Type(type="numeric")
+     * @Assert\Range(
+     *     min=0,
+     *     max=9999999.99
+     * )
      */
     private $price;
 
     /**
      * @ORM\Column(type="integer")
-     * * @Assert\Type(type="float")
-     * @Assert\Range(
-     *     min=0,
-     *     max=9999999.99
-     * )
      */
     private $nbViews;
 
@@ -89,6 +89,12 @@ class Product
      * @ORM\Column(type="string", length=128, unique=true)
      */
     private $slug;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $publisher;
 
     public function __construct()
     {
@@ -264,6 +270,18 @@ class Product
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getPublisher(): ?User
+    {
+        return $this->publisher;
+    }
+
+    public function setPublisher(?User $publisher): self
+    {
+        $this->publisher = $publisher;
 
         return $this;
     }
