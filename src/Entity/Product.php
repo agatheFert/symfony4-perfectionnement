@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Product
 {
@@ -187,6 +188,19 @@ class Product
         return $this->createdAt;
     }
 
+
+    /**
+     * @ORM\PrePersist
+     */
+
+
+    public function newCreatedDate(){
+
+        $this->createdAt = new \DateTime();
+
+    }
+
+
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
@@ -198,6 +212,21 @@ class Product
     {
         return $this->updatedAt;
     }
+
+    /**
+     * @ORM\PreUpdate
+     */
+
+    public function newUpdateDate()
+
+    {
+
+        $this->updatedAt = new \DateTime();
+
+    }
+
+
+
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
