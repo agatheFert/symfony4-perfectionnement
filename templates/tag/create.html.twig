@@ -3,6 +3,8 @@
 {% block body %}
     <h1>Formulaire de création de Tag</h1>
 
-    {{ form(formTag) }}
+    {{ form_start(formTag) }}
+    {{ form_widget(formTag) }}
     <input type="submit" value="Créer le tag" class="btn btn-success">
+    {{ form_end(formTag) }}
 {% endblock %}

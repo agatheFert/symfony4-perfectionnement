@@ -61,13 +61,13 @@ class TagController extends AbstractController
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($tag);
             $manager->flush();
-
+            dump($tag);
             // Ajout d'un message flash
             $this->addFlash('success', 'Le Tag a bien été ajouté');
 
             // Redirection
             //return $this->redirectToRoute('app_product_index');
-        }
+       }
 
         return $this->render('tag/create.html.twig', [
             'formTag' => $formTag->createView()
