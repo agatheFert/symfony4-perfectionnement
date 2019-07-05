@@ -211,6 +211,7 @@ class Product
     public function newCreatedDate(){
 
         $this->createdAt = new \DateTime();
+        $this->updateSlug();
 
     }
 
