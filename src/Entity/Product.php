@@ -6,11 +6,14 @@ use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @Vich\Uploadable
  */
 class Product
 {
@@ -74,6 +77,17 @@ class Product
      * @ORM\Column(type="string", length=255)
      */
     private $imageName;
+
+    /**
+     * @var File
+     * @Vich\UploadableField(mapping="miniature_produit", fileNameProperty="imageName")
+     */
+
+    private $imageFile;
+
+
+
+
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
@@ -320,4 +334,28 @@ class Product
 
         return $this;
     }
+
+
+    /**
+     * @return File
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+    /**
+     * @param File $imageFile
+     * @throws \Exception
+     */
+    public function setImageFile(?File $imageFile = null): void
+    {
+        if (!is_null($imageFile)) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+        $this->imageFile = $imageFile;
+    }
+
+
+
+
 }
