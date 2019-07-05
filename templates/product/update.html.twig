@@ -1,8 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Formulaire de modification</h1>
+    <h1>Formulaire de modification d'un Produit</h1>
 
-    {{ form(formProduct) }}
+    {{ form_start(formProduct) }}
+    {{ form_row(formProduct.name) }}
+    {{ form_row(formProduct.description) }}
+    {{ form_row(formProduct.price) }}
+    {{ form_row(formProduct.isPublished) }}
+    {{ form_row(formProduct.imageFile) }}
+    {{ form_row(formProduct.category) }}
+
+
+
+    <input type="submit" value="Modifier" class="btn btn-warning">
+    {{ form_end(formProduct) }}
 {% endblock %}
 
